@@ -2,8 +2,8 @@
   <h1>Movies</h1>
 </div>
 
-<div class="row">
-  <% @list_of_movies.each do |movie| %>
+<% @list_of_movies.each do |movie| %>
+  <div class="row">
     <div class="col-sm-12">
       <div class="panel panel-default">
         <div class="panel-heading">
@@ -33,5 +33,5 @@
         </div>
       </div>
     </div>
-  <% end %>
-</div>
+  </div>
+<% end %>
