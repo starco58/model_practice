@@ -33,7 +33,7 @@ class QuestionsController < ApplicationController
   end
 
   def question_5
-    # What was the most recent movie on the list that the first actor appeared in?
+    # What is the most recent movie on the list that the first actor appeared in?
 
     # Your Ruby goes here.
     # You'll probably have to use both ActiveRecord query methods as well as some plain old Ruby logic.
