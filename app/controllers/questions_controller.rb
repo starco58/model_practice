@@ -12,7 +12,7 @@ class QuestionsController < ApplicationController
 
     # Your Ruby goes here.
 
-    # @year_of_oldest_movie = ???
+    @year_of_oldest_movie = Movie.order("year ASC").first.year
   end
 
   def question_3
@@ -20,7 +20,14 @@ class QuestionsController < ApplicationController
 
     # Your Ruby goes here.
 
-    # @number_of_movies_directed_by_first_movie_director = ???
+    the_director = Director.first
+    the_directors_movies = Movie.where(:director_id => the_director.id)
+
+    @number_of_movies_directed_by_first_movie_director = the_directors_movies.count
+
+    # Alternatively,
+
+    # @number_of_movies_directed_by_first_movie_director = Movie.where(:director_id => Director.first.id).count
   end
 
   def question_4
@@ -29,7 +36,26 @@ class QuestionsController < ApplicationController
     # Your Ruby goes here.
     # You'll probably have to use both ActiveRecord query methods as well as some plain old Ruby logic.
 
-    # @most_number_of_movies_by_a_single_director = ???
+    movie_counts = []
+
+    Director.all.each do |the_director|
+      the_directors_movies = Movie.where(:director_id => the_director.id)
+      number_of_movies_directed_by_the_director = the_directors_movies.count
+
+      movie_counts.push(number_of_movies_directed_by_the_director)
+    end
+
+    @most_number_of_movies_by_a_single_director = movie_counts.max
+
+    # Alternatively,
+
+    # movie_counts = []
+
+    # Director.all.each do |the_director|
+    #   movie_counts.push(Movie.where(:director_id => the_director.id).count)
+    # end
+
+    # @most_number_of_movies_by_a_single_director = movie_counts.max
   end
 
   def question_5
@@ -38,6 +64,36 @@ class QuestionsController < ApplicationController
     # Your Ruby goes here.
     # You'll probably have to use both ActiveRecord query methods as well as some plain old Ruby logic.
 
-    # @most_recent_movie_for_first_actor = ???
+    the_actor = Actor.first
+    the_actors_roles = Role.where(:actor_id => the_actor.id)
+
+    the_actors_movies = []
+
+    the_actors_roles.each do |the_role|
+      the_actors_movies.push(Movie.find(the_role.movie_id))
+    end
+
+    most_recent_year = 0
+
+    the_actors_movies.each do |the_movie|
+      if the_movie.year.to_i > most_recent_year
+        most_recent_year = the_movie.year.to_i
+      end
+    end
+
+    @most_recent_movie_for_first_actor = most_recent_year
+
+    # Alternatively,
+
+    # the_actor = Actor.first
+    # the_actors_roles = Role.where(:actor_id => the_actor.id)
+
+    # the_actors_movie_years = []
+
+    # the_actors_roles.each do |the_role|
+    #   the_actors_movie_years.push(Movie.find(the_role.movie_id).year)
+    # end
+
+    # @most_recent_movie_for_first_actor = the_actors_movie_years.max
   end
 end
