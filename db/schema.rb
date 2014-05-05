@@ -11,20 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131115023054) do
+ActiveRecord::Schema.define(version: 20140505183320) do
 
   create_table "actors", force: true do |t|
-    t.string "name"
-    t.string "bio"
-    t.string "image_url"
     t.string "dob"
+    t.string "name"
+    t.text   "bio",       limit: 255
+    t.string "image_url"
   end
 
   create_table "directors", force: true do |t|
-    t.string "name"
-    t.string "bio"
-    t.string "image_url"
     t.string "dob"
+    t.string "name"
+    t.text   "bio"
+    t.string "image_url"
   end
 
   create_table "movies", force: true do |t|

@@ -1,0 +1,51 @@
+# Example table for a typical Book model.
+#
+# Book:
+#   - title: string
+#   - price: integer
+#   - author: string
+#   - summary: text
+#   - hardcover: boolean
+#
+# Follow the syntax exactly (colons and spacing are important).
+# Column type choices are: string, text, integer, and boolean.
+# You can have as many models as you want in this file.
+
+Actor:
+  - dob: string
+  - name: string
+  - bio: text
+  - image_url: string
+
+Director:
+  - dob: string
+  - name: string
+  - bio: text
+  - image_url: string
+
+Movie:
+  - title: string
+  - year: string
+  - duration: integer
+  - description: text
+  - image_url: string
+  - director_id: integer
+
+Role:
+  - character_name: string
+  - movie_id: integer
+  - actor_id: integer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
