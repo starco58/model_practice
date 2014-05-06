@@ -64,12 +64,11 @@ class QuestionsController < ApplicationController
     # You'll probably have to use both ActiveRecord query methods as well as some plain old Ruby logic.
 
     the_actor = Actor.second
-    the_actors_roles = Role.where(:actor_id => the_actor.id)
 
     the_actors_movies = []
 
-    the_actors_roles.each do |the_role|
-      the_actors_movies.push(Movie.find(the_role.movie_id))
+    the_actor.roles.each do |the_role|
+      the_actors_movies.push(the_role.movie)
     end
 
     most_recent_movie = { :year => 0, :title => "" }
