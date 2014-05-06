@@ -21,7 +21,7 @@ class QuestionsController < ApplicationController
     # Your Ruby goes here.
 
     the_director = Director.find(Movie.first.director_id)
-    the_directors_movies = Movie.where(:director_id => the_director.id)
+    the_directors_movies = the_director.movies
 
     @number_of_movies_directed_by_first_movie_director = the_directors_movies.count
 
@@ -39,8 +39,7 @@ class QuestionsController < ApplicationController
     movie_counts = []
 
     Director.all.each do |the_director|
-      the_directors_movies = Movie.where(:director_id => the_director.id)
-      number_of_movies_directed_by_the_director = the_directors_movies.count
+      number_of_movies_directed_by_the_director = the_director.movies.count
 
       movie_counts.push(number_of_movies_directed_by_the_director)
     end
