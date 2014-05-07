@@ -25,6 +25,7 @@ class QuestionsController < ApplicationController
 
   def question_4
     # Which actor has been in the most movies on the list?
+    # (If there's a tie, any one of them is fine)
 
     # Your Ruby goes here.
 
@@ -35,6 +36,7 @@ class QuestionsController < ApplicationController
     # This one is hard. Work on it after all your other review is complete.
 
     # Which actor/director pair has the most movies on the list?
+    # (If there's a tie, any pair of them is fine)
 
     # Your Ruby goes here.
 
