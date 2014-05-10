@@ -3,8 +3,7 @@ class QuestionsController < ApplicationController
     # What is the most recent movie on the list that the second actor appeared in?
 
     # Your Ruby goes here.
-
-    # @most_recent_movie_for_second_actor = ???
+    @most_recent_movie_for_second_actor = Actor.order[1]
   end
 
   def question_2
