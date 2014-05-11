@@ -11,7 +11,7 @@ class QuestionsController < ApplicationController
 
     @the_actor = Actor.second.id
     @the_actor_movies = Movie.where(@the_actor).first
-    @first_movie_actor = (@the_actor_movies).order("DESC")
+    @first_movie_actor = @the_actor_movies.order("DESC")
 
     @most_recent_movie_for_second_actor = @first_movie_actor.title
 
@@ -22,7 +22,10 @@ class QuestionsController < ApplicationController
 
     # Your Ruby goes here.
 
-    # @director_of_longest_movie = ???
+    @longest_movie = Movie.order("duration DESC").first.director_id
+
+    @director_of_longest_movie = Director.find("@longest_movie").name
+
   end
 
   def question_3
