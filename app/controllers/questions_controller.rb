@@ -11,9 +11,9 @@ class QuestionsController < ApplicationController
 
     @the_actor = Actor.second.id
     @the_actor_movies = Movie.where(@the_actor).first
-    @first_movie_actor = @the_actor_movies.order("DESC")
+    # @first_movie_actor = @the_actor_movies.order("year DESC")
 
-    @most_recent_movie_for_second_actor = @first_movie_actor.title
+    @most_recent_movie_for_second_actor = Movie.where(@the_actor).first.title
 
   end
 
