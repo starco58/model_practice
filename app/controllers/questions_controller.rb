@@ -5,9 +5,16 @@ class QuestionsController < ApplicationController
     # Your Ruby goes here.
     # Movies.all.each do |movie|
 
-    @second_actor = Actor.second.name
-    @most_recent_movie = Movie.first.title
-    @most_recent_movie_for_second_actor = Movie.first.title.find_by
+    # @second_actor = Actor.second.id
+    # @most_recent_movie = Movie.first.title.find_by(Roles.actor_id)
+    # @most_recent_movie_for_second_actor = Movie.first.find_by(Actor.second).title
+
+    @the_actor = Actor.second.id
+    @the_actor_movies = Movie.where(@the_actor).first
+    @first_movie_actor = (@the_actor_movies).order("DESC")
+
+    @most_recent_movie_for_second_actor = @first_movie_actor.title
+
   end
 
   def question_2
