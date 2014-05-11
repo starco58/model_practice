@@ -22,9 +22,9 @@ class QuestionsController < ApplicationController
 
     # Your Ruby goes here.
 
-    @longest_movie = Movie.order("duration DESC").first.director_id
+    # @longest_movie = Movie.order("duration DESC").first.director_id
 
-    @director_of_longest_movie = Director.find("@longest_movie").name
+    @director_of_longest_movie = Director.find(Movie.first.director_id).name
 
   end
 
