@@ -32,8 +32,20 @@ class QuestionsController < ApplicationController
     # Which director has the most movies on the list?
 
     # Your Ruby goes here.
+      movie_counts = []
 
-    # @director_with_the_most_movies = ???
+        Director.all.each do |the_director|
+
+        movies_directed_by_the_director = the_director.movies.count
+
+        movie_counts.push(movies_directed_by_the_director)
+
+      end
+
+      @most_by_a_single_director = movie_counts.order("movie_counts DESC").last
+
+      @director_with_the_most_movies =  @most_by_a_single_director.name
+
   end
 
   def question_4
