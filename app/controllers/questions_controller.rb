@@ -42,9 +42,9 @@ class QuestionsController < ApplicationController
 
       end
 
-      @most_by_a_single_director = movie_counts.order("movie_counts DESC").last
+      # @director_id_with_most movies = movie_counts.sort.last
 
-      @director_with_the_most_movies =  @most_by_a_single_director.name
+      @director_with_the_most_movies =  movie_counts.sort.last.name
 
   end
 
