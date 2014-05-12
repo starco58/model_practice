@@ -33,23 +33,31 @@ class QuestionsController < ApplicationController
 
     # Your Ruby goes here.
 
+    top_director = Director.new
 
+      Director.all.each do |the_director|
+        if the_director.movies.count > top_director.movies.count
 
-      movie_counts = []
-
-        Director.all.each do |the_director|
-
-        movies_directed_by_the_director = the_director.movies.count
-
-        movie_counts.push(movies_directed_by_the_director)
-
+        top_director = the_director
       end
+
+    end
+
+      # movie_counts = []
+
+      #   Director.all.each do |the_director|
+
+      #   movies_directed_by_the_director = the_director.movies.count
+
+      #   movie_counts.push(movies_directed_by_the_director)
+
+      # end
 
     #   @most_number_of_movies = movie_counts.sort.last
 
     # @director_with_the_most_movies = Director.find(@most_number_of_movies).name
 
-    @director_with_the_most_movies = the_director.movies.count
+    @director_with_the_most_movies = top_director.name
   end
 
   def question_4
