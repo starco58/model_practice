@@ -63,7 +63,9 @@ class QuestionsController < ApplicationController
 
       end
 
-    @actor_with_the_most_movies = actor_counts.sort.last
+      @actor_list = actor_counts.sort
+
+    @actor_with_the_most_movies = @actor_list.name
 
   end
 
