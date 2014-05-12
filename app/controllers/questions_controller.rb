@@ -32,20 +32,32 @@ class QuestionsController < ApplicationController
     # Which director has the most movies on the list?
 
     # Your Ruby goes here.
-      movie_counts = []
 
-        Director.all.each do |the_director|
+    top_director = Director.new
 
-        movies_directed_by_the_director = the_director.movies.count
+      Director.all.each do |the_director|
+        if the_director.movies.count > top_director.movies.count
 
-        movie_counts.push(movies_directed_by_the_director)
-
+        top_director = the_director
       end
 
-      @most_number_of_movies = movie_counts.sort.last
+    end
 
-      @director_with_the_most_movies = Director.find(@most_number_of_movies).name
+      # movie_counts = []
 
+      #   Director.all.each do |the_director|
+
+      #   movies_directed_by_the_director = the_director.movies.count
+
+      #   movie_counts.push(movies_directed_by_the_director)
+
+      # end
+
+    #   @most_number_of_movies = movie_counts.sort.last
+
+    # @director_with_the_most_movies = Director.find(@most_number_of_movies).name
+
+    @director_with_the_most_movies = top_director.name
   end
 
   def question_4
@@ -53,19 +65,30 @@ class QuestionsController < ApplicationController
     # (If there's a tie, any one of them is fine)
 
     # Your Ruby goes here.
-        actor_counts = []
 
-        Actor.all.each do |the_actor|
+    top_actor = Actor.new
 
-        number_of_movies_by_actor = the_actor.movies.count
+      Actor.all.each do |the_actor|
+        if the_actor.movies.count > top_actor.movies.count
 
-        actor_counts.push(number_of_movies_by_actor)
-
+        top_actor = the_actor
       end
 
-      @actor_list = actor_counts.sort
+    end
 
-    @actor_with_the_most_movies = @actor_list.name
+      #   actor_counts = []
+
+      #   Actor.all.each do |the_actor|
+
+      #   number_of_movies_by_actor = the_actor.movies.count
+
+      #   actor_counts.push(number_of_movies_by_actor)
+
+      # end
+
+      # @actor_list = actor_counts.sort
+
+      @actor_with_the_most_movies = top_actor.name
 
   end
 
