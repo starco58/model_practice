@@ -53,8 +53,18 @@ class QuestionsController < ApplicationController
     # (If there's a tie, any one of them is fine)
 
     # Your Ruby goes here.
+        actor_counts = []
 
-    # @actor_with_the_most_movies = ???
+        Actor.all.each do |the_actor|
+
+        number_of_movies_by_actor = the_actor.movies.count
+
+        actor_counts.push(number_of_movies_by_actor)
+
+      end
+
+    @actor_with_the_most_movies = actor_counts.sort.last
+
   end
 
   def question_5
